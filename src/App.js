@@ -30,9 +30,23 @@ class App extends Component {
     }
     return (
       <div className="App">
-          <Subject
+          {/* <Subject
           title={this.state.subject.title}
-          sub={this.state.subject.sub}/>
+          sub={this.state.subject.sub}/> */}
+          <header>
+            <h1><a href="/" onClick={
+              function(e){
+                // console.log(e);
+                // e.preventDefault();  <--기본동작 방지. false를 반환해도 기본동작을 정지 할 수 없음.
+                
+                // bind 이후에도 this.state.mode= "welcome";  <--안됨. state의 값이 바뀌는지 모르기 때문. 그래서 setstate를 씀.
+                this.setState({
+                  mode: "read"
+                });
+                // bind => 아래의 this.state에서 this가 위의 함수안에서는 자기자신 또는 어떤 값이든 아직 명시 되지 않아서. this가 뭔지 몰라서 undefinded 나올 때 씀.
+            }.bind(this)}>{this.state.subject.title}</a></h1>
+            {this.state.subject.sub}
+          </header>
           <List
           data={this.state.contents}/>
           <Foot title={_title} desc={_desc}/>
