@@ -8,7 +8,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      mode:"welcome",
+      mode:"read",
       subject:{title:'WEB', sub:"World Wide Web!"},
       welcome:{title:"Base result", desc:"Hello, React~!"},
       contents: [
@@ -30,10 +30,14 @@ class App extends Component {
     }
     return (
       <div className="App">
-          {/* <Subject
+          <Subject
           title={this.state.subject.title}
-          sub={this.state.subject.sub}/> */}
-          <header>
+          sub={this.state.subject.sub}
+          onChangePage= {function(){
+           this.setState({mode:"welcome"});
+          }.bind(this)}
+          />
+          {/* <header>
             <h1><a href="/" onClick={
               function(e){
                 // console.log(e);
@@ -46,7 +50,7 @@ class App extends Component {
                 // bind => 아래의 this.state에서 this가 위의 함수안에서는 자기자신 또는 어떤 값이든 아직 명시 되지 않아서. this가 뭔지 몰라서 undefinded 나올 때 씀.
             }.bind(this)}>{this.state.subject.title}</a></h1>
             {this.state.subject.sub}
-          </header>
+          </header> */}
           <List
           data={this.state.contents}/>
           <Foot title={_title} desc={_desc}/>
